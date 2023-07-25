@@ -8,6 +8,7 @@ bool verificaValor(int vetor[], int valor, int max);
 void listar(int vetor[], int max);
 bool verificaListaCheia(int pos, int max);
 int *intercalar(int *vet, int *vetorDois, int quantidade);
+int *intersecao(int *vet, int *vetorDois, int quantidade);
 
 bool parar(int pos, int max, bool valor);
 
@@ -51,6 +52,11 @@ int main() {
 
   cout << endl;
   listar(vetorTres, quantidade*2);
+
+  int* vetorFour = intersecao(vetor, vetorDois, quantidade);
+  
+  cout << endl;
+  listar(vetorFour, quantidade);
 
   return 0;
 
@@ -108,4 +114,14 @@ int *intercalar(int *vetor, int *vetorDois, int quantidade) {
     l++;
   }
   return vet;
+}
+
+int *intersecao(int *vet, int *vetorDois, int quantidade){
+	int* vetorIntersecao = new int[quantidade];
+	for(int i= 0 ; i < quantidade; i++){
+		for(int j = 0; j < quantidade; j++){
+		if (vet[i] == vetorDois[j]) vetorIntersecao[i] = vet[i];		
+		}
+	}
+	return vetorIntersecao;
 }
